@@ -1,0 +1,15 @@
+passphrase.txt
+logs/
+.git
+*.md
+.cache
+
+Dockerfile
+docker-compose.yml
+
+.github/
+.editorconfig
+.gitignore
+
+.travis.yml
+.travis.yml.OLD

@@ -20,3 +20,10 @@ include LuckyFlow::Expectations
 Avram::Migrator::Runner.new.ensure_migrated!
 Avram::SchemaEnforcer.ensure_correct_column_mappings!
 Habitat.raise_if_missing_settings!
+
+# add chromedriver
+require "selenium"
+require "webdrivers"
+
+webdriver_path = Webdrivers::Chromedriver.install
+driver = Selenium::Driver.for(:chrome, base_url: "http://localhost:9515")
