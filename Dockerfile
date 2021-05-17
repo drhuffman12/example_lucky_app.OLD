@@ -44,6 +44,13 @@ RUN git clone https://github.com/luckyframework/lucky_cli --branch ${LUCKY_VERSI
   shards install && \
   crystal build src/lucky.cr -o /usr/local/bin/lucky
 
+# chromedriver
+RUN apt-get update && apt-get upgrade -y && \
+  apt-get install -y chromium-chromedriver && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 COPY . /app
+
+RUN script/misc_setup
 
 EXPOSE 3001
