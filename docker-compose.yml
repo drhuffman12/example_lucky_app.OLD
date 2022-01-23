@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  db:
+  postgres:
     image: postgres:11.1-alpine
     environment:
       POSTGRES_USER: lucky
@@ -19,7 +19,7 @@ services:
       dockerfile: Dockerfile
     environment:
       SHARDS_CACHE_PATH: /data/.shards
-      DB_HOST: db
+      DB_HOST: postgres
       DB_USERNAME: lucky
       DB_PASSWORD: developer
     volumes:
@@ -31,11 +31,13 @@ services:
     # command: script/ci_checks
     # command: lucky dev
     depends_on:
-      - db
+      - postgres
     networks:
       - internal
     ports:
-      - 3001
+      - 3001:3001
+      - 5000:5000
+    command: bash -c "script/setup_db && lucky dev"
 
 volumes:
   db:

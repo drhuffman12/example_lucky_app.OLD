@@ -3,8 +3,8 @@ name: my_app CI
 on:
   push:
     branches: "*"
-  pull_request:
-    branches: "*"
+  # pull_request:
+  #   branches: "*"
 
 jobs:
   check-format:
@@ -107,4 +107,4 @@ jobs:
         ./lucky_tasks db.seed.required_data
 
     - name: Run tests
-      run: crystal spec
+      run: SPEC_VERBOSE=1 crystal spec
