@@ -7,6 +7,10 @@
 shards check || shards install
 crystal tool format --check
 yarn install --frozen-lockfile --no-progress
+
+echo "Running 'npx browserslist@latest --update-db'"
+npx browserslist@latest --update-db
+
 yarn prod
 
 crystal build tasks.cr -o ./lucky_tasks
