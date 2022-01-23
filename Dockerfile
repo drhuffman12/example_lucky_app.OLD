@@ -1,4 +1,4 @@
-FROM crystallang/crystal:1.0.0
+FROM crystallang/crystal:1.3.2-build
 # WORKDIR /data
 WORKDIR /app
 
@@ -17,8 +17,24 @@ RUN apt-get update && apt-get upgrade -y && \
   # postgres 11 installation
   curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
   echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" | tee /etc/apt/sources.list.d/postgres.list && \
-  apt-get update && apt-get upgrade -y && \
-  apt-get install -y postgresql-11 && \
+  apt-get update && apt-get upgrade -y -f && \
+  # apt install -y -f postgresql-11 libicu66 sysstat && \
+  apt update --fix-missing && \
+  apt install -y -f && \
+  # apt-get install -y libreadline7 && \
+  apt-get install -y libreadline-dev && \
+  # apt-get install -y libreadline8 && \
+  apt-get install -y sysstat && \
+  apt update --fix-missing && \
+  apt install -y -f && \
+  dpkg --configure -a && \
+  apt-get install -y libicu-dev && \
+  apt-get install -y libicu60 && \
+  # apt-get install -y libicu67 && \
+  # apt-get install -y libicu66 sysstat libreadline8 && \
+  # apt-get install -y libicu66 sysstat libreadline7 && \
+  # apt-get install -y postgresql-13 postgresql-client-13 && \
+  apt-get install -y postgresql-14 postgresql-client-14 && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # nodejs npm Node.js
