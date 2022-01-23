@@ -20,6 +20,10 @@ shards:
     git: https://github.com/luckyframework/carbon.git
     version: 0.2.0
 
+  carbon_sendgrid_adapter:
+    git: https://github.com/luckyframework/carbon_sendgrid_adapter.git
+    version: 0.2.0
+
   cry:
     git: https://github.com/luckyframework/cry.git
     version: 0.4.3
@@ -107,5 +111,3 @@ shards:
   wordsmith:
     git: https://github.com/luckyframework/wordsmith.git
     version: 0.3.0
-
-#
