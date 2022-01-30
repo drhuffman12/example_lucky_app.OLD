@@ -22,13 +22,13 @@ RUN apt-get update && apt-get upgrade -y && \
   curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
   # echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" | tee /etc/apt/sources.list.d/postgres.list && \
   apt-get update && apt-get upgrade -y && \
-  apt-cache search postgresql | grep postgresql && \
   # apt-get install -y gnupg && \
   # apt-get install -y postgresql-11 && \
   sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && \
-  # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \ 
   apt -y update && \
   apt-get autoremove && \
+  apt-cache search postgresql | grep postgresql && \
+  # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \ 
   apt-get install -y postgresql postgresql-contrib && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
   postgres psql -c "SELECT version();" && \
