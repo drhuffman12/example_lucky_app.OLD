@@ -9,7 +9,7 @@ targets:
     main: src/my_app.cr
 
 # crystal: 1.0.0
-# c
+# crystal: 1.2.2
 
 dependencies:
   authentic:
